@@ -173,7 +173,7 @@ func expandTarXz(dstDir string, inFile string, relRoot string) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed to create XZ format reader")
 	}
-	tarReader := tar.NewReader(xzReader)
+	tarReader := tar.NewReader(io.Reader(xzReader))
 
 	for {
 		hdr, err := tarReader.Next()
