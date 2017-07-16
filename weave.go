@@ -40,8 +40,9 @@ func weave(dstRoot string, srcDir string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Fprintf(os.Stderr, "%s: Archives found:\n", ProgramName)
 	for _, a := range matched {
-		fmt.Fprintf(os.Stderr, "%s %s %s\n", a.name, a.version, a.path)
+		fmt.Fprintf(os.Stderr, "# %s\tversion: %s\tpath: %s\n", a.name, a.version, a.path)
 	}
 	err = expandArchives(dstRoot, matched)
 	if err != nil {
